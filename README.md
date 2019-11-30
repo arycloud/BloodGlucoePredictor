@@ -38,7 +38,7 @@ I have tackled this problem from a Time Series perspective and tried different m
 
 ## Contributing DSWG Members
 
-**Team Leads (Contacts) : [Full Name](https://github.com/[github handle])(@slackHandle)**
+**Team Leads (Contacts) : [AbdulRehman](https://github.com/arycloud)(@Abdul)**
 
 #### Other Members:
 
