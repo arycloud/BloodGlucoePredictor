@@ -2,21 +2,21 @@ import matplotlib.pyplot as plt
 
 
 def clarke_error_grid(ref_values, pred_values, title_string):
-    print(len(pred_values))
-    print(len(ref_values))
+    # print(len(pred_values))
+    # print(len(ref_values))
     # Checking to see if the lengths of the reference and prediction arrays are the same
     assert (len(ref_values) == len(pred_values)), "Unequal number of values (reference : {}) (prediction : {}).".format(
         len(ref_values), len(pred_values))
 
     # Checks to see if the values are within the normal physiological range, otherwise it gives a warning
     if max(ref_values) > 400 or max(pred_values) > 400:
-        print(
-            "Input Warning: the maximum reference value {} or the maximum predictio value {} exceeds the normal physiological range of glucose (<400 mg/dl)".format(
+        print("Input Warning: the maximum reference value {} or the maximum predictio value {} exceeds the"
+              "normal physiological range of glucose (<400 mg/dl)".format(
                 max(ref_values),
                 max(pred_values)))
     if min(ref_values) < 0 or min(pred_values) < 0:
-        print("Input Warning: the minimum reference value {} or the minimum prediction\
-            value {} is less than 0 mg/dl.").format(min(ref_values), min(pred_values))
+        print("Input Warning: the minimum reference value {} or the minimum prediction"
+              "value {} is less than 0 mg/dl.".format(min(ref_values), min(pred_values)))
 
     # Clear plot
     plt.clf()
