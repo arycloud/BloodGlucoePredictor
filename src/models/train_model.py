@@ -4,7 +4,7 @@ def fit_model(model, test, train_X, train_y):
     history = model.fit(
         train_X,
         train_y,
-        epochs=120, batch_size=80,
+        epochs=200, batch_size=100,
         validation_data=(test_X, test_y),
         verbose=2, shuffle=False)
     print(history)

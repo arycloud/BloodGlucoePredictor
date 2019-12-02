@@ -74,22 +74,22 @@ def build_lstm_model(input_neurons, loss_func, optimizer):
     parsed_dataset = parsed_dataset[:-12, :]
 
     dataset_values, scaler = scale_reframed_dataset(parsed_dataset)
-    train_size = int(len(dataset_values) * 0.6)
+    train_size = int(len(dataset_values) * 0.28)
     test_size = len(dataset_values) - train_size
     train, test, train_X, train_y, test_X, test_y = split_train_test(dataset_values, train_size, test_size)
 
     # print(f'train size: {train.shape} & test size {test.shape}')
     # print(f'train x: {train_X.shape} & train y {train_y.shape}')
     model = Sequential()
-    input_neurons = 128
+    input_neurons = 132
 
     model.add(LSTM(input_neurons, input_shape=(train_X.shape[1], train_X.shape[2]),
                    activation='elu'))
-    # model.add(Dense(96, activation='linear'))
+    # model.add(Dense(75, activation='linear'))
     model.add(LeakyReLU(alpha=0.5))
     # model.add(Dense(64, activation='elu'))
-    # model.add(Dropout(0.3))
+    # model.add(Dropout(0.01))
     model.add(Dense(1,))
-    optimizer = Adam(learning_rate=0.00170)
+    optimizer = Adam(learning_rate=0.0019)
     model.compile(loss=loss_func, optimizer=optimizer)
     return model, train, test, train_X, train_y, test_X, test_y, scaler, eval_ds, from_this
