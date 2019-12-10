@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from src.models.build_model import generate_supervised
-from src.visualization import clark_error_analysis
+from src.visualization import clark_error_analysis, grid_analysis
 
 
 def next_hour_predictions(heart_rate, values_at_t_minus1, model, scaler, next_n, timestep=5):
@@ -46,7 +46,10 @@ def make_prediction(model, scaler, test_X, test_y):
     plt, zone = clark_error_analysis.clarke_error_grid(inv_y, inv_yhat, 'Testing')
     print(f'Zone is {zone}')
     plt.show()
-    plt.savefig('test_predictions.png')
-    print(new_test_X[-1])
-    # print(f'last heart rate val is: {new_test_X}')
-    # next_hour_predictions(heart_rate, values_at_t_minus1, model, scaler, next_n)
+    # plt.savefig('test_predictions.png')
+    # print(new_test_X[-1])
+    acc = grid_analysis.zone_accuracy(inv_y, inv_yhat, detailed=True)
+    # print(acc)
+    print('Parkes:')
+    for val in acc:
+        print(100 * val)

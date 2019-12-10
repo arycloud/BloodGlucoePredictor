@@ -1,7 +1,7 @@
 import numpy as np
 from src.data import preprocess
 from src.models import build_model, train_model, predict_model
-from src.visualization import model_history_plot, clark_error_analysis
+from src.visualization import model_history_plot, clark_error_analysis, grid_analysis
 
 if __name__ == '__main__':
     # preprocess the data
@@ -25,9 +25,9 @@ if __name__ == '__main__':
     pred_interval = 1
     preds = predict_model.next_hour_predictions(eval_ds[:, 0], np.array([from_this[1], from_this[0]]).reshape((1, 2)),
                                                 model, scaler, 12, pred_interval)
-    print("Next hour predictions: ", preds)
+    # print("Next hour predictions: ", preds)
     actules = [g for iter, g in enumerate(eval_ds[:, 1]) if iter % pred_interval == 0]
-    print(actules)
+    # print(actules)
     plt, zone = clark_error_analysis.clarke_error_grid(actules, preds, 'Validation')
     plt.show()
     # print("Ref values: ", ref_vals)
@@ -35,5 +35,10 @@ if __name__ == '__main__':
     # plt, zone = clark_error_analysis.clarke_error_grid(ref_vals, preds, 'Next Hour Predictions')
     # plt.show()
     print(zone)
+    # print(type(actules))
+    # print(type(preds))
+    # acc = grid_analysis.zone_accuracy(actules, preds)
+    # print('Parkes:')
+    # print(acc)
 
     model.save("models/trained_model.h5")
