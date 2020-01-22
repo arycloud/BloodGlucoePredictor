@@ -1,6 +1,6 @@
 # BloodGlucoePredictor
 
-This project is the part of a Hackathon, we have to predict the Blood Glucose level for an hour in the future at every 5 minutes interval. 
+In this project, we have to predict the Blood Glucose level for an hour in the future at every 5 minutes interval. 
 
 #### -- Project Status: [Completed]
 
